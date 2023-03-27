@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package com.grpc.example;
+
+option java_multiple_files = true;
+option java_package = "com.grpc.example.greet.service";
+option go_package = "./pb";
+
+
+import "user_message.proto";
+
+message GreetUserRequest {
+    User user = 1;
+}
+
+message GreetUserResponse {
+  string greetMessage = 1;
+}
+
+service GreetUserService {
+  rpc GreetUser(GreetUserRequest) returns (GreetUserResponse) {};
+}
